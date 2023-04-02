@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "@hooks/useAuth";
+import Image from "next/image";
 
 export default function Login() {
   const emailRef = useRef(null);
@@ -31,10 +32,12 @@ export default function Login() {
         href="/"
         className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
       >
-        <img
+        <Image
           className="w-32 h-32 mr-2"
           src="/assets/petit-amour.jpg"
           alt="logo"
+          width={128}
+          height={128}
         />
       </Link>
       <div className="w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-blue-900 border-blue-800">

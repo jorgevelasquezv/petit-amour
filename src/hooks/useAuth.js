@@ -16,19 +16,21 @@ function useProvideAuth() {
   const [auth, setAuth] = useState(true);
 
   const [user, setUser] = useState({
-    user: { 
+    user: {
       name: "",
       lastName: "",
       email: "",
       phone: "",
       password: "",
     },
-    petits: [
-    ],
+    petits: [],
   });
 
   const signIn = (email, password) => {
-    setAuth(true);
+    if (email === user.user.email && password === user.user.password) {
+      setAuth(true);
+      router.push("/petit");
+    }
   };
 
   const logout = () => {

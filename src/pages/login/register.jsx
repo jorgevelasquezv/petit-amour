@@ -1,15 +1,15 @@
+import React, { useEffect, useState } from "react";
 import { useAuth } from "@hooks/useAuth";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
 
 export default function Register() {
   const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
   const router = useRouter();
 
-  const { user, setUser, setAuth } = useAuth();
+  const { user, setUser, auth, setAuth } = useAuth();
 
   const [dataRegister, setDataRegister] = useState({
     name: "",
@@ -48,6 +48,12 @@ export default function Register() {
     }
     console.log(phone.length > 8);
   };
+
+  useEffect(() => {
+    if (auth) {
+      router.push("/petit");
+    }
+  }, [auth, router]);
 
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
