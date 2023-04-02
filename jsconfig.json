@@ -7,6 +7,8 @@
       "@components/*": ["components/*"],
       "@layout/*": ["layout/*"],
       "@assets/*": ["assets/*"],
+      "@hooks/*": ["hooks/*"],
+      "@lib/*": ["lib/*"],
     }
   }
 }

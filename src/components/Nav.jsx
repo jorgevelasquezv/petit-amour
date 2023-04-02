@@ -2,11 +2,12 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useAuth } from "@hooks/useAuth";
 
 const navigation = [
-  { name: "My Petit", href: "/petit", current: false },
-  { name: "Reportes", href: "#", current: false },
-  { name: "Acerca de Nosotros", href: "#", current: false },
+  { name: "My Petit", href: "/petit", current: false, private: true },
+  { name: "Reportes", href: "/reports", current: false, private: true },
+  { name: "Acerca de Nosotros", href: "/about", current: false, private: false },
 ];
 
 function classNames(...classes) {
@@ -14,6 +15,13 @@ function classNames(...classes) {
 }
 
 export default function Nav() {
+
+  const { auth, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  }
+
   return (
     <Disclosure
       as="nav"
@@ -52,43 +60,78 @@ export default function Nav() {
                     src="/assets/petit-amour.jpg"
                     alt="Petit Amour"
                   />
-                  <Link href="/" className="text-white text-2xl ml-2">Petit Amour</Link>
+                  <Link
+                    href="/"
+                    className="text-white text-2xl ml-2 max-md:hidden"
+                  >
+                    Petit Amour
+                  </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {navigation.map(item => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className={
-                          "text-gray-300 hover:bg-blue-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                        }
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                    {navigation.map(item => {
+                      if (!item.private) {
+                        return (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className={
+                              "text-gray-300 hover:bg-blue-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                            }
+                            aria-current={item.current ? "page" : undefined}
+                          >
+                            {item.name}
+                          </Link>
+                        );
+                      }
+
+                      if (auth && item.private) {
+                        return (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className={
+                              "text-gray-300 hover:bg-blue-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                            }
+                            aria-current={item.current ? "page" : undefined}
+                          >
+                            {item.name}
+                          </Link>
+                        );
+                      }
+                    })}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <Link
-                  href="/login/login"
-                  className="bg-green-900 text-white rounded-md px-3 py-2 text-sm font-medium mr-2"
-                  aria-current="page"
-                >
-                  Login
-                </Link>
-                <Link
-                  href="/login/register"
-                  className="bg-orange-900 text-white rounded-md px-3 py-2 text-sm font-medium"
-                  aria-current="page"
-                >
-                  Register
-                </Link>
-
+                {!auth ? (
+                  <>
+                    <Link
+                      href="/login/login"
+                      className="bg-green-900 text-white rounded-md px-3 py-2 text-sm font-medium mr-2"
+                      aria-current="page"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      href="/login/register"
+                      className="bg-orange-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                      aria-current="page"
+                    >
+                      Register
+                    </Link>
+                  </>
+                ) : (
+                  <button
+                    onClick={handleLogout}
+                    className="bg-green-900 text-white rounded-md px-3 py-2 text-sm font-medium mr-2"
+                    aria-current="page"
+                  >
+                    Logout
+                  </button>
+                )}
                 {/* Profile dropdown */}
-                <Menu
+                {auth && <Menu
                   as="div"
                   className="relative ml-3"
                 >
@@ -153,7 +196,7 @@ export default function Nav() {
                       </Menu.Item>
                     </Menu.Items>
                   </Transition>
-                </Menu>
+                </Menu>}
               </div>
             </div>
           </div>

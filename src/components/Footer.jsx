@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-white shadow dark:bg-blue-900">
+    <footer className="shadow bg-blue-900">
       <div className="w-full container mx-auto p-4 md:px-6 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a
@@ -51,7 +51,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-blue-700 lg:my-8" />
+        <hr className="my-6 sm:mx-auto border-blue-700 lg:my-8" />
         <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 
           <a
