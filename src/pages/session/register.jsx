@@ -44,9 +44,7 @@ export default function Register() {
       setUser({ ...user, user: dataRegister });
       setAuth(true);
       router.push("/petit");
-      console.log(user);
     }
-    console.log(phone.length > 8);
   };
 
   useEffect(() => {
@@ -279,7 +277,7 @@ export default function Register() {
             <p className="text-sm font-light text-gray-300">
               ¿Ya tienes una cuenta?{" "}
               <Link
-                href="/login/login"
+                href="/session/login"
                 className="font-medium text-blue-400 hover:underline"
               >
                 Ingrese aquí

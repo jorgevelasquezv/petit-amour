@@ -1,6 +1,6 @@
 import { useAuth } from "@hooks/useAuth";
 import { useRouter } from "next/router";
-import Login from "pages/login/login";
+import Login from "pages/session/login";
 import { useEffect } from "react";
 
 const WithPrivateRoute = ({ children }) => {
@@ -9,7 +9,7 @@ const WithPrivateRoute = ({ children }) => {
 
   useEffect(() => {
     if (!auth) {
-      router.push("/login/login");
+      router.push("/session/login");
     }
   }, [auth, router])
   

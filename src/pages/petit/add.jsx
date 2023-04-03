@@ -4,9 +4,9 @@ import { Food } from "@components/Food";
 import { PhysicalFeatures } from "@components/PhysicalFeatures";
 import { useAuth } from "@hooks/useAuth";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Add() {
+export default function Add({ id }) {
   const { user, setUser } = useAuth();
 
   const router = useRouter();
@@ -27,16 +27,39 @@ export default function Add() {
   const [care, setCare] = useState({ brush: "", bath: "" });
 
   const handleSavePetit = () => {
-    setUser({
-      ...user,
-      ["petits"]: [...user.petits, { basicData, physicalFeatures, food, care }],
-    });
+    if (id) {
+      const copyPetit = [...user.petits];
+      copyPetit.splice(id, 1);
+      copyPetit.splice(id, 0, { basicData, physicalFeatures, food, care });
+      setUser({
+        ...user,
+        ["petits"]: [...copyPetit],
+      });
+    } else {
+      setUser({
+        ...user,
+        ["petits"]: [
+          ...user.petits,
+          { basicData, physicalFeatures, food, care },
+        ],
+      });
+    }
     router.push("/petit");
   };
 
   const handleBack = () => {
     router.push("/petit");
   };
+
+  useEffect(() => {
+    if (id) {
+      setBasicData(user.petits[id].basicData);
+      setPhysicalFeatures(user.petits[id].physicalFeatures);
+      setFood(user.petits[id].food);
+      setCare(user.petits[id].care);
+      console.log(user.petits[id]);
+    }
+  }, [id, user.petits]);
 
   return (
     <div className="mb-6">

@@ -7,6 +7,7 @@ import { BasicData } from "@components/BasicData";
 import { PhysicalFeatures } from "@components/PhysicalFeatures";
 import { Food } from "@components/Food";
 import { Care } from "@components/Care";
+import { useRouter } from "next/router";
 
 const objetUser = {
   user: {
@@ -67,7 +68,10 @@ const objetUser = {
 };
 
 export default function Petit() {
-  const { user, setUser } = useAuth();
+
+  const router = useRouter();
+
+  const { user } = useAuth();
 
   const [tabActive, setTabActive] = useState("0");
 
@@ -75,10 +79,19 @@ export default function Petit() {
     setTabActive(e.target.id);
   };
 
+  const handleEdit = () => {
+    console.log(tabActive);
+    router.push(`/petit/${tabActive}`)
+  }
+
+  const handleDelete = () => {
+
+   }
+
   useEffect(() => {
-    setUser(objetUser);
+    localStorage.setItem("user", JSON.stringify(user));
     console.log(user);
-  }, [setUser, user]);
+  }, [user]);
 
   return (
     <div>
@@ -88,7 +101,19 @@ export default function Petit() {
       >
         Agregar Petit
       </Link>
+      <button
+        onClick={handleEdit}
+        className="mx-3 text-white bg-amber-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-amber-500"
+      >
+        Editar Petit
+      </button>
 
+      <button
+        onClick={handleDelete}
+        className="mx-3 text-white bg-red-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-red-500"
+      >
+        Eliminar Petit
+      </button>
       {user.petits.length > 0 ? (
         <div className="my-3">
           <ul className="mb-5 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row">
@@ -103,7 +128,7 @@ export default function Petit() {
             ))}
           </ul>
           {
-            <section className={ "mb-6" }>
+            <section className={"mb-6"}>
               <BasicData
                 basicData={user.petits[tabActive].basicData}
                 disabled={true}

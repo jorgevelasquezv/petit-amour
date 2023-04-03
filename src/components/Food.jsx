@@ -137,7 +137,7 @@ export const Food = ({ food, setFood, disabled = false }) => {
                 name="image"
                 type="file"
                 className="hidden"
-                value={food.image}
+                // value={food.image}
                 onChange={handleChange}
               />
             </label>

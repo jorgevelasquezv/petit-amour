@@ -119,7 +119,7 @@ export default function Login() {
             <p className="text-sm font-light text-gray-400">
               ¿Aún no tienes una cuenta?
               <Link
-                href="/login/register"
+                href="/session/register"
                 className="font-medium text-blue-400 hover:underline ml-1"
               >
                 Registrarse
