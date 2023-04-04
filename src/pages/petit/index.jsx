@@ -95,10 +95,10 @@ export default function Petit() {
   }, [user]);
 
   return (
-    <div>
+    <div className="max-sm:ml-2">
       <Link
         href={"/petit/add"}
-        className="mr-3 text-white bg-sky-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-sky-500"
+        className="max-sm:mr-1 mr-3 text-white bg-sky-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-sky-500"
       >
         Agregar Petit
       </Link>
@@ -106,14 +106,14 @@ export default function Petit() {
         <>
           <button
             onClick={handleEdit}
-            className="mx-3 text-white bg-amber-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-amber-500"
+            className="max-sm:mx-1 mx-3 text-white bg-amber-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-amber-500"
           >
             Editar Petit
           </button>
 
           <button
             onClick={handleDelete}
-            className="mx-3 text-white bg-red-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-red-500"
+            className="max-sm:mx mx-3 text-white bg-red-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-red-500"
           >
             Eliminar Petit
           </button>

@@ -63,7 +63,7 @@ export default function Add({ id }) {
   }, [id, user.petits]);
 
   return (
-    <div className="mb-6">
+    <div className="mx-2 mb-6 sm:mx-0">
       <button
         onClick={handleSavePetit}
         className="text-white bg-sky-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-sky-500"

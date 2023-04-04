@@ -27,7 +27,7 @@ export default function Login() {
   
 
   return (
-    <div className="flex flex-col items-center justify-center px-6 mx-auto lg:py-0 md:h-screen">
+    <div className="flex flex-col items-center justify-center px-6 mx-auto lg:my-12 lg:py-0 ">
       <Link
         href="/"
         className="flex items-center mb-6 text-2xl font-semibold text-gray-900"

@@ -3,11 +3,17 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useAuth } from "@hooks/useAuth";
+import { useRouter } from "next/router";
 
 const navigation = [
   { name: "My Petit", href: "/petit", current: false, private: true },
   { name: "Reportes", href: "/reports", current: false, private: true },
-  { name: "Acerca de Nosotros", href: "/about", current: false, private: false },
+  {
+    name: "Acerca de Nosotros",
+    href: "/about",
+    current: false,
+    private: false,
+  },
 ];
 
 function classNames(...classes) {
@@ -15,12 +21,17 @@ function classNames(...classes) {
 }
 
 export default function Nav() {
-
   const { auth, logout } = useAuth();
+
+  const router = useRouter();
 
   const handleLogout = () => {
     logout();
-  }
+  };
+
+  const handleHome = () => {
+    router.push('/');
+  };
 
   return (
     <Disclosure
@@ -48,17 +59,13 @@ export default function Nav() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
+              <div className="flex flex-1 items-center justify-start sm:justify-center sm:items-stretch">
+                <div className="flex flex-shrink-0 items-center ml-14 sm:ml-0">
                   <img
-                    className="block h-8 w-auto lg:hidden"
+                    className="h-8 w-auto"
                     src="/assets/petit-amour.jpg"
                     alt="Petit Amour"
-                  />
-                  <img
-                    className="hidden h-8 w-auto lg:block"
-                    src="/assets/petit-amour.jpg"
-                    alt="Petit Amour"
+                    onClick={handleHome}
                   />
                   <Link
                     href="/"
