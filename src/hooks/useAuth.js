@@ -46,7 +46,8 @@ function useProvideAuth() {
 
   const storage = () => {
     setUser(
-      JSON.parse(localStorage.getItem("user")) || {
+      JSON.parse(localStorage.getItem("user")) ||
+      {
         user: {
           name: "",
           lastName: "",

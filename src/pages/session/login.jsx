@@ -91,7 +91,6 @@ export default function Login() {
                     aria-describedby="remember"
                     type="checkbox"
                     className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-blue-900 dark:border-blue-700 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                    required
                   />
                 </div>
                 <div className="ml-3 text-sm">

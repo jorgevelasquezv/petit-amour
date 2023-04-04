@@ -11,7 +11,7 @@ export const BasicData = ({ basicData, setBasicData, disabled = false}) => {
   return (
     <div>
       <h2 className="my-6 text-center border-blue-400 border-b text-3xl">
-        Datos Basicos
+        Datos Básicos
       </h2>
       <article className="grid grid-cols-2 max-sm:grid-cols-1 lg:grid-cols-3 gap-x-10">
         <section className="my-2">

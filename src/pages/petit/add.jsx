@@ -2,6 +2,7 @@ import { BasicData } from "@components/BasicData";
 import { Care } from "@components/Care";
 import { Food } from "@components/Food";
 import { PhysicalFeatures } from "@components/PhysicalFeatures";
+import WithPrivateRoute from "@components/WithPrivateRoute";
 import { useAuth } from "@hooks/useAuth";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -111,3 +112,5 @@ export default function Add({ id }) {
     </div>
   );
 }
+
+Add.Auth = WithPrivateRoute;

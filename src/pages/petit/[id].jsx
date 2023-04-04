@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import Add from "./add";
+import WithPrivateRoute from "@components/WithPrivateRoute";
 
 const Edit = () => {
 
@@ -12,3 +13,5 @@ const Edit = () => {
 };
 
 export default Edit;
+
+Edit.Auth = WithPrivateRoute;
