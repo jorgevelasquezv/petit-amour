@@ -47,7 +47,7 @@ export default function Register() {
                 name="name"
                 id="name"
                 className="border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-blue-900 border-blue-700 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Your name"
+                placeholder="Su nombre"
                 required
                 value={dataRegister.name}
                 onChange={handleChange}
@@ -74,7 +74,7 @@ export default function Register() {
                 name="lastName"
                 id="lastName"
                 className="border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-blue-900 border-blue-700 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Your last name"
+                placeholder="Su apellido"
                 required
                 value={dataRegister.lastName}
                 onChange={handleChange}
@@ -102,7 +102,7 @@ export default function Register() {
                 name="phone"
                 id="phone"
                 className="border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-blue-900 border-blue-700 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Your phone"
+                placeholder="Su teléfono"
                 required
                 value={dataRegister.phone}
                 onChange={handleChange}

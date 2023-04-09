@@ -22,7 +22,7 @@ export const Alert = ({ id, handleCancel, setTabActive }) => {
   return (
     <div
       id="alert-additional-content-2"
-      className="p-4 my-4 text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+      className="p-4 my-4 text-red-800 border border-red-300 rounded-lg bg-red-50"
       role="alert"
     >
       <div className="flex items-center">
