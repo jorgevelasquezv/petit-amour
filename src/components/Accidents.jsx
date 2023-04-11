@@ -1,28 +1,27 @@
 import React from 'react';
 
-export const Accidents = () => {
-    const handleChange = () => {};
+export const Accidents = ({accidents, handleChange}) => {
 
     return (
         <article className="mx-3">
             <section className="my-2">
                 <label
-                    htmlFor="type"
+                    htmlFor="typeRegister"
                     className="block text-sm font-medium mb-2"
                 >
                     Tipo de registro
                 </label>
 
                 <select
-                    id="type"
-                    name="type"
+                    id="typeRegister"
+                    name="typeRegister"
                     className="py-3 px-4 pl-11 block w-full border-0 border-b-2 border-gray-200 text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                    value={''}
+                    value={accidents.typeRegister}
                     onChange={handleChange}
                 >
                     <option>Seleccione tipo de registro</option>
-                    <option value="Accidentes">Accidente</option>
-                    <option value="Enfermedades">Enfermedad</option>
+                    <option value="Accidente">Accidente</option>
+                    <option value="Enfermedad">Enfermedad</option>
                 </select>
             </section>
 
@@ -40,7 +39,7 @@ export const Accidents = () => {
                     name="date"
                     className="py-3 px-4 pl-11 block w-full border-0 border-b-2 border-gray-200 text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Fecha del registro"
-                    value={''}
+                    value={accidents.date}
                     onChange={handleChange}
                 />
             </section>
@@ -59,7 +58,7 @@ export const Accidents = () => {
                     rows={2}
                     className="py-3 px-4 pl-11 block w-full border-0 border-b-2 border-gray-200 text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Diagnotisco médico"
-                    value={''}
+                    value={accidents.diagnosis}
                     onChange={handleChange}
                 />
             </section>
@@ -78,7 +77,7 @@ export const Accidents = () => {
                     rows={2}
                     className="py-3 px-4 pl-11 block w-full border-0 border-b-2 border-gray-200 text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Tratamiento médico"
-                    value={''}
+                    value={accidents.treatment}
                     onChange={handleChange}
                 />
             </section>
@@ -97,7 +96,7 @@ export const Accidents = () => {
                     rows={2}
                     className="py-3 px-4 pl-11 block w-full border-0 border-b-2 border-gray-200 text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Evolución de Petit"
-                    value={''}
+                    value={accidents.evolutions}
                     onChange={handleChange}
                 />
             </section>

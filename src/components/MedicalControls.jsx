@@ -1,22 +1,22 @@
 import React from 'react';
 
-export const MediacalControls = () => {
-    const handleChange = () => {};
+export const MedicalControls = ({medicalControls, handleChange}) => {
+    
     return (
         <article className="mx-3">
             <section className="my-2">
                 <label
-                    htmlFor="type"
+                    htmlFor="doctor"
                     className="block text-sm font-medium mb-2"
                 >
                     Medico
                 </label>
 
                 <select
-                    id="type"
-                    name="type"
+                    id="doctor"
+                    name="doctor"
                     className="py-3 px-4 pl-11 block w-full border-0 border-b-2 border-gray-200 text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                    value={''}
+                    value={medicalControls.doctor}
                     onChange={handleChange}
                 >
                     <option>Seleccione tipo de médico</option>
@@ -39,7 +39,7 @@ export const MediacalControls = () => {
                     name="date"
                     className="py-3 px-4 pl-11 block w-full border-0 border-b-2 border-gray-200 text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Fecha del registro"
-                    value={''}
+                    value={medicalControls.date}
                     onChange={handleChange}
                 />
             </section>
@@ -58,7 +58,7 @@ export const MediacalControls = () => {
                     rows={2}
                     className="py-3 px-4 pl-11 block w-full border-0 border-b-2 border-gray-200 text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Observaciones médicas"
-                    value={''}
+                    value={medicalControls.observations}
                     onChange={handleChange}
                 />
             </section>

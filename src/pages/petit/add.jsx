@@ -41,7 +41,13 @@ export default function Add({ id }) {
         ...user,
         ["petits"]: [
           ...user.petits,
-          { basicData, physicalFeatures, food, care },
+          {
+            dateRegister: new Date().toISOString().split("T")[0],
+            basicData,
+            physicalFeatures,
+            food,
+            care,
+          },
         ],
       });
     }
@@ -58,7 +64,6 @@ export default function Add({ id }) {
       setPhysicalFeatures(user.petits[id].physicalFeatures);
       setFood(user.petits[id].food);
       setCare(user.petits[id].care);
-      console.log(user.petits[id]);
     }
   }, [id, user.petits]);
 

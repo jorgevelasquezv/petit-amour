@@ -11,64 +11,6 @@ import { useRouter } from 'next/router';
 import { Alert } from '@components/Alert';
 import { Health } from '@components/Health';
 
-const objetUser = {
-    user: {
-        name: 'Pepito',
-        lastName: 'Perez',
-        email: '1@1.11',
-        phone: '12345678',
-        password: '12345678',
-    },
-    petits: [
-        {
-            basicData: {
-                name: 'Apolo',
-                age: '3',
-                type: 'Perro',
-            },
-            physicalFeatures: {
-                color: 'Gris',
-                weight: '13',
-                size: '65',
-            },
-            food: {
-                type: 'Seco',
-                mark: 'Agility Gold',
-                quantity: '150',
-                frequency: '3',
-                image: 'C:\\fakepath\\agility_gold.jpg',
-            },
-            care: {
-                brush: 'Cerdas suaves una vez al dia',
-                bath: 'Una vez al mes ',
-            },
-        },
-        {
-            basicData: {
-                name: 'Michi',
-                age: '1',
-                type: 'Gato',
-            },
-            physicalFeatures: {
-                color: 'Marron',
-                weight: '4',
-                size: '35',
-            },
-            food: {
-                type: 'Seco',
-                mark: 'Cat Chow',
-                quantity: '50',
-                frequency: '3',
-                image: 'C:\\fakepath\\Cat-Chow.jpeg',
-            },
-            care: {
-                brush: 'Diario cepillo cerdas suaves',
-                bath: 'Seco cada 15 días',
-            },
-        },
-    ],
-};
-
 export default function Petit() {
     const router = useRouter();
 
@@ -92,91 +34,88 @@ export default function Petit() {
 
     useEffect(() => {
         localStorage.setItem('user', JSON.stringify(user));
-        console.log(user);
     }, [user]);
 
     return (
-        <div className="max-sm:mx-2">
-            <Link
-                href={'/petit/add'}
-                className="max-sm:mr-1 mr-3 text-white bg-sky-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-sky-500"
+      <div className="max-sm:mx-2">
+        <Link
+          href={"/petit/add"}
+          className="max-sm:mr-1 mr-3 text-white bg-sky-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-sky-500"
+        >
+          Agregar Petit
+        </Link>
+        {user.petits.length > 0 && (
+          <>
+            <button
+              onClick={handleEdit}
+              className="max-sm:mx-1 mx-3 text-white bg-amber-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-amber-500"
             >
-                Agregar Petit
-            </Link>
-            {user.petits.length > 0 && (
-                <>
-                    <button
-                        onClick={handleEdit}
-                        className="max-sm:mx-1 mx-3 text-white bg-amber-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-amber-500"
-                    >
-                        Editar Petit
-                    </button>
+              Editar Petit
+            </button>
 
-                    <button
-                        onClick={handleDelete}
-                        className="max-sm:mx mx-3 text-white bg-red-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-red-500"
-                    >
-                        Eliminar Petit
-                    </button>
-                </>
-            )}
+            <button
+              onClick={handleDelete}
+              className="max-sm:mx mx-3 text-white bg-red-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-red-500"
+            >
+              Eliminar Petit
+            </button>
+          </>
+        )}
 
-            {user.petits.length > 0 && deletePetit && (
-                <Alert
-                    id={tabActive}
-                    handleCancel={handleDelete}
-                    setTabActive={setTabActive}
+        {user.petits.length > 0 && deletePetit && (
+          <Alert
+            id={tabActive}
+            handleCancel={handleDelete}
+            setTabActive={setTabActive}
+          />
+        )}
+
+        {user.petits.length > 0 ? (
+          <div className="my-3">
+            <ul className="mb-5 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row">
+              {user.petits.map((tab, index) => (
+                <Tab
+                  key={tab.basicData.name}
+                  id={index}
+                  handleTabActive={handleTabActive}
+                  name={tab.basicData.name}
+                  tabActive={tabActive}
                 />
-            )}
+              ))}
+            </ul>
 
-            {user.petits.length > 0 ? (
-                <div className="my-3">
-                    <ul className="mb-5 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row">
-                        {user.petits.map((tab, index) => (
-                            <Tab
-                                key={tab.basicData.name}
-                                id={index}
-                                handleTabActive={handleTabActive}
-                                name={tab.basicData.name}
-                                tabActive={tabActive}
-                            />
-                        ))}
-                    </ul>
+            <section>
+              <Health tabActive={tabActive} />
+            </section>
 
-                    <section>
-                        <Health />
-                    </section>
+            <section className={"mb-6"}>
+              <BasicData
+                basicData={user.petits[tabActive].basicData}
+                disabled={true}
+              />
 
-                    <section className={'mb-6'}>
-                        <BasicData
-                            basicData={user.petits[tabActive].basicData}
-                            disabled={true}
-                        />
+              <PhysicalFeatures
+                physicalFeatures={user.petits[tabActive].physicalFeatures}
+                disabled={true}
+              />
 
-                        <PhysicalFeatures
-                            physicalFeatures={
-                                user.petits[tabActive].physicalFeatures
-                            }
-                            disabled={true}
-                        />
+              <Food
+                food={user.petits[tabActive].food}
+                disabled={true}
+              />
 
-                        <Food
-                            food={user.petits[tabActive].food}
-                            disabled={true}
-                        />
-
-                        <Care
-                            care={user.petits[tabActive].care}
-                            disabled={true}
-                        />
-                    </section>
-                </div>
-            ) : (
-                <h1 className="text-black my-9 text-center text-2xl">
-                    No hay petits registrados. Agrege un petit
-                </h1>
-            )}
-        </div>
+              <Care
+                care={user.petits[tabActive].care}
+                disabled={true}
+              />
+            </section>
+          </div>
+        ) : (
+          <h1 className="text-black my-9 text-center text-2xl">
+            No hay petits registrados. Agrege un petit
+          </h1>
+        )}
+      </div>
     );
 }
 

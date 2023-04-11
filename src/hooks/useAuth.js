@@ -29,6 +29,7 @@ function useProvideAuth() {
             password: '',
         },
         petits: [],
+        medicalData: [],
     });
 
     const signIn = (email, password) => {
