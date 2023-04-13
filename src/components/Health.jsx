@@ -5,8 +5,8 @@ import { Exams } from "./Exams";
 import { useHealth } from "@hooks/useHealth";
 
 export const Health = ({ tabActive }) => {
-    const {
-      modalHealth,
+  const {
+    modalHealth,
     selectHealth,
     handleSelectHealth,
     handleCloseModal,
@@ -54,13 +54,10 @@ export const Health = ({ tabActive }) => {
               {/* Modal header */}
               <div className="flex items-start justify-between p-4 border-b rounded-t ">
                 <h3 className="text-xl font-semibold text-gray-900 ">
-                  {selectHealth === "IM"
-                    ? "Indicadores Medicos"
-                    : selectHealth === "CM"
-                    ? "Controles Medicos"
-                    : selectHealth === "AE"
-                    ? "Accidentes o Enfermedades"
-                    : "Exámenes de Laboratorio"}
+                  {selectHealth === "IM" && "Indicadores Medicos"}
+                  {selectHealth === "CM" && "Controles Medicos"}
+                  {selectHealth === "AE" && "Accidentes o Enfermedades"}
+                  {selectHealth === "EL" && "Exámenes de Laboratorio"}
                 </h3>
                 <button
                   type="button"

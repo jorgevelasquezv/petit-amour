@@ -31,25 +31,62 @@ export const userTest = {
         bath: "Una vez al mes ",
       },
       medicalData: {
-        medicalIndicators: [{ date: "", weight: "", vaccine: "" }],
-        medicalControls: [{ doctor: "", date: "", observations: "" }],
-
-        accidents: [
+        medicalIndicators: [
           {
-            typeRegister: "",
-            date: "",
-            diagnosis: "",
-            treatment: "",
-            evolution: "",
+            date: "2023-04-04",
+            weight: "14",
+            vaccine: "Parbo",
+          },
+          {
+            date: "2023-04-04",
+            weight: "14",
+            vaccine: "Parbo",
+          },
+          {
+            date: "2023-03-27",
+            weight: "13",
+            vaccine: "Parbo3",
+          },
+          {
+            date: "2023-03-26",
+            weight: "12",
+            vaccine: "Rabia",
           },
         ],
-
+        medicalControls: [
+          {
+            doctor: "General",
+            date: "2023-04-06",
+            observations: "Revisión general ",
+          },
+          {
+            doctor: "Especialista",
+            date: "2023-04-01",
+            observations: "Anestesia local",
+          },
+        ],
+        accidents: [
+          {
+            typeRegister: "Enfermedad",
+            date: "2023-03-21",
+            diagnosis: "Fiebre ",
+            treatment: "Liquido constante ",
+            evolution: "Recuperándose",
+          },
+          {
+            typeRegister: "Accidente",
+            date: "2023-03-30",
+            diagnosis: "Caída de 2 metros de altura ",
+            treatment: "Inmobolización de pata derecha",
+            evolution: "Recuperándose",
+          },
+        ],
         exams: [
           {
-            date: "",
-            exams: "",
-            recommendations: "",
-            image: "",
+            date: "2023-03-30",
+            exams: "En perfectas condiciones ",
+            recommendations: "Baño de agua caliente ",
+            image: "C:\\fakepath\\vecteezy_pet-line-icons_.jpg",
           },
         ],
       },
@@ -78,27 +115,10 @@ export const userTest = {
         bath: "Seco cada 15 días",
       },
       medicalData: {
-        medicalIndicators: [{ date: "", weight: "", vaccine: "" }],
-        medicalControls: [{ doctor: "", date: "", observations: "" }],
-
-        accidents: [
-          {
-            typeRegister: "",
-            date: "",
-            diagnosis: "",
-            treatment: "",
-            evolution: "",
-          },
-        ],
-
-        exams: [
-          {
-            date: "",
-            exams: "",
-            recommendations: "",
-            image: "",
-          },
-        ],
+        medicalIndicators: [],
+        medicalControls: [],
+        accidents: [],
+        exams: [],
       },
     },
   ],
