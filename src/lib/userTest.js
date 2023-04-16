@@ -84,7 +84,7 @@ export const userTest = {
         exams: [
           {
             date: "2023-03-30",
-            exams: "En perfectas condiciones ",
+            exams: "Radiografia",
             recommendations: "Baño de agua caliente ",
             image: "C:\\fakepath\\vecteezy_pet-line-icons_.jpg",
           },
