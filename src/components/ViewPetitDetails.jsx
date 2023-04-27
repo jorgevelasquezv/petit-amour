@@ -5,6 +5,7 @@ import { Food } from "./Food";
 import { Care } from "./Care";
 import { useAuth } from "@hooks/useAuth";
 import { useRouter } from "next/router";
+import { MedicalData } from "./MedicalData";
 
 export const ViewPetitDetails = ({ id }) => {
     const { user } = useAuth();
@@ -29,7 +30,7 @@ export const ViewPetitDetails = ({ id }) => {
           disabled={true}
         />
 
-        <PhysicalFeatures
+        {/* <PhysicalFeatures
           physicalFeatures={user.petits[id].physicalFeatures}
           disabled={true}
         />
@@ -42,7 +43,9 @@ export const ViewPetitDetails = ({ id }) => {
         <Care
           care={user.petits[id].care}
           disabled={true}
-        />
+        /> */}
+
+        <MedicalData id={id} />
       </section>
     </div>
   );
