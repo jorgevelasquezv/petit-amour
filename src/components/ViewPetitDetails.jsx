@@ -30,7 +30,7 @@ export const ViewPetitDetails = ({ id }) => {
           disabled={true}
         />
 
-        {/* <PhysicalFeatures
+        <PhysicalFeatures
           physicalFeatures={user.petits[id].physicalFeatures}
           disabled={true}
         />
@@ -43,7 +43,7 @@ export const ViewPetitDetails = ({ id }) => {
         <Care
           care={user.petits[id].care}
           disabled={true}
-        /> */}
+        />
 
         <MedicalData id={id} />
       </section>
