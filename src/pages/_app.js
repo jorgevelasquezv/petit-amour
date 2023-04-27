@@ -1,4 +1,3 @@
-import WithPrivateRoute from "@components/WithPrivateRoute";
 import { ProviderAuth } from "@hooks/useAuth";
 import MainLayout from "@layout/MainLayout";
 import "../styles/tailwind.css";

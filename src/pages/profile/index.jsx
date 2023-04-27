@@ -1,6 +1,5 @@
 import WithPrivateRoute from "@components/WithPrivateRoute";
 import { useProfile } from "@hooks/useProfile";
-import Image from "next/image";
 
 const Profile = () => {
   const {

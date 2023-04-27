@@ -115,10 +115,64 @@ export const userTest = {
         bath: "Seco cada 15 días",
       },
       medicalData: {
-        medicalIndicators: [],
-        medicalControls: [],
-        accidents: [],
-        exams: [],
+        medicalIndicators: [
+          {
+            date: "2023-04-04",
+            weight: "14",
+            vaccine: "Rabia 1",
+          },
+          {
+            date: "2023-04-04",
+            weight: "14",
+            vaccine: "Parbo 1",
+          },
+          {
+            date: "2023-03-27",
+            weight: "13",
+            vaccine: "Parbo 2",
+          },
+          {
+            date: "2023-03-26",
+            weight: "12",
+            vaccine: "Rabia 2",
+          },
+        ],
+        medicalControls: [
+          {
+            doctor: "General",
+            date: "2023-04-06",
+            observations: "Revisión general ",
+          },
+          {
+            doctor: "Especialista",
+            date: "2023-04-01",
+            observations: "Anestesia local",
+          },
+        ],
+        accidents: [
+          {
+            typeRegister: "Accidente",
+            date: "2023-04-05",
+            diagnosis: "Atacado por un perro",
+            treatment: "Inmobolización de mano izquierda",
+            evolution: "Recuperándose",
+          },
+          {
+            typeRegister: "Enfermedad",
+            date: "2023-04-01",
+            diagnosis: "Erupiones en la piel",
+            treatment: "Unguento cada 6 horas",
+            evolution: "Recuperándose",
+          },
+        ],
+        exams: [
+          {
+            date: "2023-04-06",
+            exams: "Ecografía",
+            recommendations: "Dieta liquida",
+            image: "C:\\fakepath\\vecteezy_pet-line-icons_.jpg",
+          },
+        ],
       },
     },
   ],
