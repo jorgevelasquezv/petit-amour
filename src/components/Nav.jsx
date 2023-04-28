@@ -4,33 +4,8 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useAuth } from "@hooks/useAuth";
 import { useRouter } from "next/router";
+import { navigation } from "@lib/navigation";
 
-const navigation = [
-  {
-    name: "My Petit",
-    href: "/petit",
-    current: false,
-    private: true,
-  },
-  {
-    name: "Reportes",
-    href: "/reports",
-    current: false,
-    private: true,
-  },
-  {
-    name: "Acerca de Nosotros",
-    href: "/about",
-    current: false,
-    private: false,
-  },
-  {
-    name: "Notifications",
-    select: true,
-    current: false,
-    private: true,
-  },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -41,12 +16,7 @@ export default function Nav() {
 
   const { name, lastName } = user.user;
 
-  const [dropdownNotification, setDropdownNotification] = useState(false);
-
   const avatar = `https://ui-avatars.com/api/?name=${name.trim()}+${lastName.trim()}`;
-  console.log(
-    `https://ui-avatars.com/api/?name=${name.trim()}+${lastName.trim()}`
-  );
 
   const router = useRouter();
 
@@ -56,10 +26,6 @@ export default function Nav() {
 
   const handleHome = () => {
     router.push("/");
-  };
-
-  const handleNotification = () => {
-    setDropdownNotification(!dropdownNotification);
   };
 
   return (

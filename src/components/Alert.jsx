@@ -1,23 +1,12 @@
-import { useAuth } from "@hooks/useAuth";
+import { useAlert } from "@hooks/useAlert";
 import React from "react";
 
 export const Alert = ({ id, handleCancel, setTabActive }) => {
-  const { user, setUser } = useAuth();
-  const namePetit = user.petits[id].basicData.name;
-
-  const handleDelete = () => {
-    const copyPetit = [...user.petits];
-    console.log(copyPetit);
-    copyPetit.splice(id, 1);
-    console.log(copyPetit);
-    setTabActive("0");
-    setUser({
-      ...user,
-      ["petits"]: [...copyPetit],
-    });
-
-    handleCancel();
-  };
+  const { namePetit, handleDelete } = useAlert({
+      id,
+      handleCancel,
+      setTabActive,
+  });
 
   return (
     <div

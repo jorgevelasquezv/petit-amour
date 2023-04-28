@@ -1,121 +1,101 @@
-import { useEffect, useState } from 'react';
 import WithPrivateRoute from '@components/WithPrivateRoute';
 import Tab from '@components/Tab';
-import { useAuth } from '@hooks/useAuth';
 import Link from 'next/link';
 import { BasicData } from '@components/BasicData';
 import { PhysicalFeatures } from '@components/PhysicalFeatures';
 import { Food } from '@components/Food';
 import { Care } from '@components/Care';
-import { useRouter } from 'next/router';
 import { Alert } from '@components/Alert';
 import { Health } from '@components/Health';
+import { usePetit } from '@hooks/usePetit';
 
 export default function Petit() {
-    const router = useRouter();
-
-    const { user } = useAuth();
-
-    const [tabActive, setTabActive] = useState('0');
-
-    const [deletePetit, setDeletePetit] = useState(false);
-
-    const handleTabActive = (e) => {
-        setTabActive(e.target.id);
-    };
-
-    const handleEdit = () => {
-        router.push(`/petit/${tabActive}`);
-    };
-
-    const handleDelete = () => {
-        setDeletePetit(!deletePetit);
-    };
-
-    useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(user));
-    }, [user]);
+    const {
+        petits,
+        handleEdit,
+        handleDelete,
+        deletePetit,
+        tabActive,
+        handleTabActive,
+        setTabActive,
+        lengthPetits,
+        basicData,
+        physicalFeatures,
+        food,
+        care,
+    } = usePetit();
 
     return (
-      <div className="max-sm:mx-2">
-        <Link
-          href={"/petit/add"}
-          className="max-sm:mr-1 mr-3 text-white bg-sky-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-sky-500"
-        >
-          Agregar Petit
-        </Link>
-        {user.petits.length > 0 && (
-          <>
-            <button
-              onClick={handleEdit}
-              className="max-sm:mx-1 mx-3 text-white bg-amber-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-amber-500"
+        <div className="max-sm:mx-2">
+            <Link
+                href={'/petit/add'}
+                className="max-sm:mr-1 mr-3 text-white bg-sky-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-sky-500"
             >
-              Editar Petit
-            </button>
+                Agregar Petit
+            </Link>
+            {lengthPetits > 0 && (
+                <>
+                    <button
+                        onClick={handleEdit}
+                        className="max-sm:mx-1 mx-3 text-white bg-amber-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-amber-500"
+                    >
+                        Editar Petit
+                    </button>
 
-            <button
-              onClick={handleDelete}
-              className="max-sm:mx mx-3 text-white bg-red-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-red-500"
-            >
-              Eliminar Petit
-            </button>
-          </>
-        )}
+                    <button
+                        onClick={handleDelete}
+                        className="max-sm:mx mx-3 text-white bg-red-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-red-500"
+                    >
+                        Eliminar Petit
+                    </button>
+                </>
+            )}
 
-        {user.petits.length > 0 && deletePetit && (
-          <Alert
-            id={tabActive}
-            handleCancel={handleDelete}
-            setTabActive={setTabActive}
-          />
-        )}
-
-        {user.petits.length > 0 ? (
-          <div className="my-3">
-            <ul className="mb-5 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row">
-              {user.petits.map((tab, index) => (
-                <Tab
-                  key={tab.basicData.name}
-                  id={index}
-                  handleTabActive={handleTabActive}
-                  name={tab.basicData.name}
-                  tabActive={tabActive}
+            {lengthPetits > 0 && deletePetit && (
+                <Alert
+                    id={tabActive}
+                    handleCancel={handleDelete}
+                    setTabActive={setTabActive}
                 />
-              ))}
-            </ul>
+            )}
 
-            <section>
-              <Health tabActive={tabActive} />
-            </section>
+            {lengthPetits > 0 ? (
+                <div className="my-3">
+                    <ul className="mb-5 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row">
+                        {petits.map((tab, index) => (
+                            <Tab
+                                key={tab.basicData.name}
+                                id={index}
+                                handleTabActive={handleTabActive}
+                                name={tab.basicData.name}
+                                tabActive={tabActive}
+                            />
+                        ))}
+                    </ul>
 
-            <section className={"mb-6"}>
-              <BasicData
-                basicData={user.petits[tabActive].basicData}
-                disabled={true}
-              />
+                    <section>
+                        <Health tabActive={tabActive} />
+                    </section>
 
-              <PhysicalFeatures
-                physicalFeatures={user.petits[tabActive].physicalFeatures}
-                disabled={true}
-              />
+                    <section className={'mb-6'}>
+                        <BasicData basicData={basicData} disabled={true} />
 
-              <Food
-                food={user.petits[tabActive].food}
-                disabled={true}
-              />
+                        <PhysicalFeatures
+                            physicalFeatures={physicalFeatures}
+                            disabled={true}
+                        />
 
-              <Care
-                care={user.petits[tabActive].care}
-                disabled={true}
-              />
-            </section>
-          </div>
-        ) : (
-          <h1 className="text-black my-9 text-center text-2xl">
-            No hay petits registrados. Agrege un petit
-          </h1>
-        )}
-      </div>
+                        <Food food={food} disabled={true} />
+
+                        <Care care={care} disabled={true} />
+                    </section>
+                </div>
+            ) : (
+                <h1 className="text-black my-9 text-center text-2xl">
+                    No hay petits registrados. Agrege un petit
+                </h1>
+            )}
+        </div>
     );
 }
 

@@ -1,39 +1,10 @@
 import { ReportTableBody } from "@components/ReportTableBody";
 import WithPrivateRoute from "@components/WithPrivateRoute";
-import { useAuth } from "@hooks/useAuth";
-import React, { useState } from "react";
+import { useReports } from "@hooks/useReports";
 import { v4 as uuidv4 } from "uuid";
 
 const Reports = () => {
-  const { user } = useAuth();
-
-  const [petitsFilter, setPetitsFilter] = useState([...user.petits]);
-
-  const handleSearch = e => {
-    const petit = e.target.value;
-
-    setPetitsFilter(filterSearchPetits(petit));
-    console.log(filterSearchPetits(petit));
-  };
-
-  const filterSearchPetits = value => {
-    return [...user.petits].filter(
-      petit =>
-        petit.basicData.name.toLowerCase().includes(value.toLowerCase()) ||
-        petit.physicalFeatures.weight
-          .toLowerCase()
-          .includes(value.toLowerCase()) ||
-        petit.basicData.age == value ||
-        petit.medicalData.accidents[
-          petit.medicalData.accidents.length - 1
-        ]?.typeRegister
-          .toLowerCase()
-          .includes(value.toLowerCase()) ||
-        petit.medicalData.medicalIndicators[0]?.vaccine
-          .toLowerCase()
-          .includes(value.toLowerCase())
-    );
-  };
+  const { petitsFilter, handleSearch } = useReports();
 
   return (
     <div className="min-h-[800px]">
